@@ -1,0 +1,64 @@
+### Resumen de **Interfaces y Clases en TypeScript**  
+
+#### **Interfaces**
+Las **interfaces** en TypeScript definen la estructura de un objeto sin proporcionar una implementación. Se usan para describir la forma de un objeto y garantizar que cumpla con ciertas propiedades o métodos.
+
+📌 **Características de las Interfaces**:
+- No generan código en JavaScript (son solo para comprobaciones en tiempo de compilación).
+- Se usan para definir contratos en objetos y clases.
+- Pueden extender otras interfaces (`extends`).
+- Pueden tener propiedades opcionales (`?`) y de solo lectura (`readonly`).
+
+✅ **Ejemplo de una interfaz:**
+```typescript
+interface Persona {
+  nombre: string;
+  edad: number;
+  saludar(): void;
+}
+
+const persona: Persona = {
+  nombre: "Juan",
+  edad: 25,
+  saludar() {
+    console.log(`Hola, soy ${this.nombre}`);
+  }
+};
+```
+
+#### **Clases**
+Las **clases** en TypeScript son plantillas para crear objetos y pueden incluir propiedades y métodos. A diferencia de las interfaces, **sí generan código en JavaScript**.
+
+📌 **Características de las Clases**:
+- Pueden tener **propiedades y métodos**.
+- Soportan **modificadores de acceso** (`public`, `private`, `protected`).
+- Pueden **implementar interfaces** (`implements`).
+- Pueden usar **herencia** con `extends`.
+
+✅ **Ejemplo de una clase:**
+```typescript
+class Estudiante implements Persona {
+  constructor(public nombre: string, public edad: number) {}
+
+  saludar() {
+    console.log(`Hola, soy ${this.nombre} y tengo ${this.edad} años.`);
+  }
+}
+
+const estudiante = new Estudiante("Ana", 20);
+estudiante.saludar();
+```
+
+#### **Diferencias Clave**
+| Característica  | Interfaces | Clases |
+|---------------|------------|--------|
+| ¿Generan código en JS? | ❌ No | ✅ Sí |
+| Herencia | `extends` (entre interfaces) | `extends` (entre clases) |
+| Implementación | Solo describe la estructura | Define estructura y comportamiento |
+| Modificadores de acceso | No soporta | Soporta (`private`, `protected`, `public`) |
+
+#### **¿Cuándo usar cada una?**
+- **Usa interfaces** cuando solo necesites definir la estructura de un objeto.
+- **Usa clases** cuando necesites definir lógica y comportamiento junto con la estructura.
+
+Si necesitas algo más detallado o un caso específico, dime. 🚀
